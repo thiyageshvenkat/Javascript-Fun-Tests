@@ -1,0 +1,222 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <style>
+    </style>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <canvas id = "canvas" width="900" height="675"></canvas>
+
+    <script>// Ball Script
+      var Ball = function () {
+          this.Ballcoords = p1coords
+          this.x = 450;
+          this.y = 337.5;
+          this.xSpeed = 5;
+          this.ySpeed = 5;
+          this.newDirection = 0;
+          };
+
+      var circle = function(x, y, radius, fillCircle, color) {
+          ctx.beginPath();
+          ctx.fillStyle = color
+          ctx.arc(x, y, radius, 0, Math.PI * 2, false)
+          if (fillCircle) {
+              ctx.fill();
+          }else{
+              ctx.stroke();
+          }
+      };
+
+      Ball.prototype.draw = function () {
+        circle(this.x, this.y, 10, true, "Black");
+      };
+
+      Ball.prototype.move = function () {
+         this.x += this.xSpeed;
+         this.y += this.YSpeed;
+      };
+
+      Ball.prototype.moveLeft = function () {
+          this.x -= 3.5;
+      }
+
+      Ball.prototype.moveRight = function () {
+          this.x += 3.5;
+      }
+
+      Ball.prototype.moveUp = function () {
+          this.y += 3.5;
+      }
+
+      Ball.prototype.moveDown = function () {
+          this.y -= 3.5;
+      }
+
+    //Next Part
+
+    var Ball2 = function () {
+          this.Ballcoords = p1coords
+          this.x = 100;
+          this.y = 100;
+          this.xSpeed = 0;
+          this.ySpeed = 0;
+          this.newDirection = 0;
+          };
+
+      var circle = function(x, y, radius, fillCircle, color) {
+          ctx.beginPath();
+          ctx.fillStyle = color
+          ctx.arc(x, y, radius, 0, Math.PI * 2, false)
+          if (fillCircle) {
+              ctx.fill();
+          }else{
+              ctx.stroke();
+          }
+      };
+
+      Ball2.prototype.draw = function () {
+        circle(this.x, this.y, 30, false, "Black");
+      };
+
+      Ball2.prototype.move = function () {
+         this.x += this.xSpeed;
+         this.y += this.YSpeed;
+      };
+
+      Ball2.prototype.moveLeft = function () {
+          this.x -= 1.5;
+      }
+
+      Ball2.prototype.moveRight = function () {
+          this.x += 1.5;
+      }
+
+      Ball2.prototype.moveUp = function () {
+          this.y += 1.5;
+      }
+
+      Ball2.prototype.moveDown = function () {
+          this.y -= 1.5;
+      }
+
+      var Ball3 = function () {
+          this.Ballcoords = p1coords
+          this.x = Ball.x + 100;
+          this.y = Ball.y + 100;
+          this.xSpeed = 0;
+          this.ySpeed = 0;
+          this.newDirection = 0;
+          };
+
+      var circle = function(x, y, radius, fillCircle, color) {
+          ctx.beginPath();
+          ctx.fillStyle = color
+          ctx.arc(x, y, radius, 0, Math.PI * 2, false)
+          if (fillCircle) {
+              ctx.fill();
+          }else{
+              ctx.stroke();
+          }
+      };
+
+
+
+
+    </script>
+    <script>
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        var p1coords;
+
+        var ball = new Ball
+
+        var directions = {
+            37: "left",
+            38: "up",
+            39: "right",
+            40: "down"
+        }
+
+        setInterval(function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+        var newDirection;
+        $("body").keydown(function (event) {
+            ball.newDirection = event.keyCode;
+        });
+
+        //if (newDirection === 39)
+         {
+            ball.draw();
+           // ball.moveRight();
+            if (ball.newDirection === 39) {
+                ball.moveRight();
+            }
+            if (ball.newDirection === 37) {
+                ball.moveLeft();
+            }
+
+            if (ball.newDirection === 40) {
+                ball.moveUp();
+            }
+
+            if (ball.newDirection === 38) {
+                ball.moveDown();
+            }
+            ball.newDirection = 0;
+        }
+           ctx.strokeRect(0, 0, 900, 675)
+      }, 30);
+
+      var ball2 = new  Ball2;
+
+      var directions = {
+            37: "left",
+            38: "up",
+            39: "right",
+            40: "down"
+        }
+
+        setInterval(function () {
+
+
+        var newDirection;
+        $("body").keydown(function (event) {
+            ball2.newDirection = event.keyCode;
+        });
+
+        //if (newDirection === 39)
+         {
+            ball2.draw();
+           // ball.moveRight();
+            if (ball2.newDirection === 39) {
+                ball2.moveRight();
+            }
+            if (ball2.newDirection === 37) {
+                ball2.moveLeft();
+            }
+
+            if (ball2.newDirection === 40) {
+                ball2.moveUp();
+            }
+
+            if (ball2.newDirection === 38) {
+                ball2.moveDown();
+            }
+            ball2.newDirection = 0;
+        }
+
+      }, 30);
+
+
+
+
+
+
+    </script>
+</body>
+</html>
